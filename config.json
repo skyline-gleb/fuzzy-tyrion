@@ -1,0 +1,38 @@
+{
+	"api_url": "http://catalog.api.2gis.ru/2.0/",
+
+	"rps": 2,
+
+	"headers": {},
+
+	"parameters": {
+		"key": "rumbdr6413"
+	},
+
+	"methods": {
+		"search": {
+			"http_method": "POST",
+			"count": 2,
+			"parameters": {
+				"type": {
+					"required": true,
+					"data_type": "string",
+					"value": "filial",
+					"action": "skip"
+				},
+				"what": {
+					"required": true,
+					"data_type": "string",
+					"value": "2gis",
+					"action": "generate"
+				},
+				"where": {
+					"required": true,
+					"data_type": "string",
+					"value": "Novosibirsk",
+					"action": "generate"
+				}
+			}
+		}
+	}
+}
