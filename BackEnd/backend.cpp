@@ -1,13 +1,9 @@
-#include <iostream>
-#include <string>
+#include "DataGenerator.h"
 
-using namespace std;
 
-extern "C" {
-
-    char * func(char *_s) {
-        std::cout << "print cpp extern func 'C': " << _s << std::endl;
-
-        return _s;
-    }
+extern "C"
+char * stringGenerate(char *_s) {
+    
+    DataGenerator gen;
+    return (gen.randomlyGenerateData(_s);)
 }
