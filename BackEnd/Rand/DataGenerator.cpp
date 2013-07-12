@@ -6,17 +6,12 @@
  */
 
 #include "DataGenerator.h"
-
-#include <iostream>
 #include <cstdlib>
-#include <sstream>
-#include <climits>
-#define SIZE 100
 
 DataGenerator::DataGenerator() {
 }
 
-std::string DataGenerator::randomlyGenerateString(const int len){
+std::string DataGenerator::randomlyGenerateString(const int len) {
     std::string str;
     for (int i = 0; i < len; i++) {
         str.push_back(rand() % 256);
@@ -24,13 +19,13 @@ std::string DataGenerator::randomlyGenerateString(const int len){
     return str;
 }
 
-int DataGenerator::randomlyGenerateInt(){
-        return (rand() << 30) | (rand() << 15) | rand();
+int DataGenerator::randomlyGenerateInt32() {
+    return (rand() << 30) | (rand() << 15) | rand();
 }
 
-float DataGenerator::randomlyGenerateFloat(){
+float DataGenerator::randomlyGenerateFloat() {
     const int MIN = -2;
     const int MAX = 3;
     const int PRECISION = 10000;
-    return MIN + (rand()%((MAX - MIN) * PRECISION + 1)) / (float)PRECISION;
+    return MIN + (rand() % ((MAX - MIN) * PRECISION + 1)) / (float) PRECISION;
 }
