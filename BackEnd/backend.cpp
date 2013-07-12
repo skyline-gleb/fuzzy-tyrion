@@ -1,16 +1,9 @@
-#include <iostream>
-#include <string>
-#include <jsoncpp/json.h>
+#include "DataGenerator.h"
 
-#include "jsonparse.h"
-
-using namespace std;
 
 extern "C"
-char * func(char *_s) {
-    std::cout << "print cpp extern func 'C': " << _s << std::endl;
-
-    jsonParse(_s);
+char * stringGenerate(char *_s) {
     
-    return _s;
+    DataGenerator gen;
+    return (gen.randomlyGenerateData(_s);)
 }
