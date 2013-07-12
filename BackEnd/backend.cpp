@@ -3,7 +3,7 @@
 
 extern "C" {
 
-    char * StringGenerate(const int _length) {
+    char * generateString(const int _length = 10) {
 
         DataGenerator gen;
         std::string str = (gen.randomlyGenerateString(_length));
@@ -17,9 +17,9 @@ extern "C" {
         return pres;
     }
     
-    int generate_int32()
+    int generateInt32(const int _min = 0, const int _max = 1000)
     {
         DataGenerator gen;
-        return gen.randomlyGenerateInt();
+        return gen.randomlyGenerateInt32();
     }
 }
