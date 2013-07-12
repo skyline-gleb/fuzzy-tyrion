@@ -5,12 +5,10 @@
                    displayName="Исходные файлы "
                    projectFiles="true">
       <itemPath>backend.cpp</itemPath>
-      <itemPath>jsonparse.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="HeaderFiles"
                    displayName="Файлы заголовков"
                    projectFiles="true">
-      <itemPath>jsonparse.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Файлы ресурсов"
@@ -36,11 +34,6 @@
         <compilerSet>default</compilerSet>
       </toolsSet>
       <compileType>
-        <linkerTool>
-          <linkerLibItems>
-            <linkerLibFileItem>/usr/lib/libjson_linux-gcc-4.6_libmt.so</linkerLibFileItem>
-          </linkerLibItems>
-        </linkerTool>
       </compileType>
     </conf>
     <conf name="Release" type="2">

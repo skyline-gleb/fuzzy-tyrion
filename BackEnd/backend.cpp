@@ -1,16 +1,13 @@
 #include <iostream>
 #include <string>
-#include <jsoncpp/json.h>
-
-#include "jsonparse.h"
 
 using namespace std;
 
-extern "C"
-char * func(char *_s) {
-    std::cout << "print cpp extern func 'C': " << _s << std::endl;
+extern "C" {
 
-    jsonParse(_s);
-    
-    return _s;
+    char * func(char *_s) {
+        std::cout << "print cpp extern func 'C': " << _s << std::endl;
+
+        return _s;
+    }
 }

@@ -34,7 +34,6 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/jsonparse.o \
 	${OBJECTDIR}/backend.o
 
 
@@ -61,11 +60,6 @@ LDLIBSOPTIONS=
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libBackEnd.so: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -shared -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libBackEnd.so -fPIC ${OBJECTFILES} ${LDLIBSOPTIONS} 
-
-${OBJECTDIR}/jsonparse.o: jsonparse.cpp 
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} $@.d
-	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/jsonparse.o jsonparse.cpp
 
 ${OBJECTDIR}/backend.o: backend.cpp 
 	${MKDIR} -p ${OBJECTDIR}
