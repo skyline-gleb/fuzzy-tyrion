@@ -62,13 +62,3 @@ class logManager:
         return self.__seveJUNIT(tree)
     """def __del__(self):
         self.appendReport()"""
-log = CLogManager("1.xml")
-log.suteName = "Test sute"
-log.timestamp = "3556565656"
-log.host = "api.2gis.ru"
-
-log.addLog({ "status":501, "time":56568982, "name":"Test Log", "message":"Is so gooood=))" })
-log.addLog({ "status":504, "time":55656548, "name":"Test Log", "message":"Is so bad=(" })
-log.addLog({ "status":503, "time":98921125, "name":"Test Log", "message":"Is bad=(" })
-log.printLog()
-log.appendReport()
