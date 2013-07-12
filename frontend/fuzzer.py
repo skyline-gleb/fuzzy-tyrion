@@ -27,7 +27,9 @@ class Fuzzer(object):
 					 self.api_url + api_method)
 		request = Request(http_method, url, payload, self.headers)
 		response = request.send()
-		Log.write(response)
+		msg = response.request['method'] + ' ' + response.request['url'] + '\n'
+		msg += str(response.status_code) + ' ' + response.status_msg + '\n'
+		Log.write(msg)
 
 	def prepare_data(self, parameters):
 		data = {}
