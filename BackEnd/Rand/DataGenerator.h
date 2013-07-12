@@ -7,15 +7,13 @@
 
 #ifndef DATAGENERATOT_H
 #define	DATAGENERATOT_H
-#include <list>
 #include <string>
-
 
 class DataGenerator {
 public:
     DataGenerator();
     std::string randomlyGenerateString(const int len);
-    int randomlyGenerateInt();
+    int randomlyGenerateInt32();
     float randomlyGenerateFloat();
 private:
     std::string genRandomString(const int len);
