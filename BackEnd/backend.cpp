@@ -16,4 +16,10 @@ extern "C" {
         
         return pres;
     }
+    
+    int generate_int32()
+    {
+        DataGenerator gen;
+        return gen.randomlyGenerateInt();
+    }
 }
