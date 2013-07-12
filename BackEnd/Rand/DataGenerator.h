@@ -9,7 +9,7 @@
 #define	DATAGENERATOT_H
 #include <list>
 #include <string>
-#include "types.h"
+
 
 class DataGenerator {
 public:

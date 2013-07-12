@@ -1,4 +1,4 @@
-#include "DataGenerator.h"
+#include "Rand/DataGenerator.h"
 
 
 extern "C"

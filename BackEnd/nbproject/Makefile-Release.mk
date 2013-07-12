@@ -34,6 +34,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/Rand/DataGenerator.o \
 	${OBJECTDIR}/backend.o
 
 
@@ -60,6 +61,11 @@ LDLIBSOPTIONS=
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libBackEnd.so: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -shared -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libBackEnd.so -fPIC ${OBJECTFILES} ${LDLIBSOPTIONS} 
+
+${OBJECTDIR}/Rand/DataGenerator.o: Rand/DataGenerator.cpp 
+	${MKDIR} -p ${OBJECTDIR}/Rand
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/Rand/DataGenerator.o Rand/DataGenerator.cpp
 
 ${OBJECTDIR}/backend.o: backend.cpp 
 	${MKDIR} -p ${OBJECTDIR}
