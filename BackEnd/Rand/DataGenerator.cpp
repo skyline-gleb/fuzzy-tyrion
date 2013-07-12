@@ -6,7 +6,7 @@
  */
 
 #include "DataGenerator.h"
-#include "types.h"
+
 #include <iostream>
 #include <cstdlib>
 #include <sstream>
