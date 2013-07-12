@@ -12,6 +12,7 @@ DataGenerator::DataGenerator() {
 }
 
 std::string DataGenerator::randomlyGenerateString(const int len) {
+    srand(time(0));
     std::string str;
     for (int i = 0; i < len; i++) {
         str.push_back(rand() % 256);
@@ -19,11 +20,13 @@ std::string DataGenerator::randomlyGenerateString(const int len) {
     return str;
 }
 
-int DataGenerator::randomlyGenerateInt32() {
+int DataGenerator::randomlyGenerateInt() {
+    srand(time(0));
     return (rand() << 30) | (rand() << 15) | rand();
 }
 
 float DataGenerator::randomlyGenerateFloat() {
+    srand(time(0));
     const int MIN = -2;
     const int MAX = 3;
     const int PRECISION = 10000;

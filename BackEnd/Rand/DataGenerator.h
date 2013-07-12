@@ -13,7 +13,7 @@ class DataGenerator {
 public:
     DataGenerator();
     std::string randomlyGenerateString(const int len);
-    int randomlyGenerateInt32();
+    int randomlyGenerateInt();
     float randomlyGenerateFloat();
 private:
     std::string genRandomString(const int len);
