@@ -16,7 +16,7 @@ from fuzzer import *
 def main():
 	App.init()
 
-	Config.load(App.args['config'])
+	Config.load(App.args.config)
 
 	fuzzer = Fuzzer(Config.api_url, Config.rps,
 					Config.headers, Config.parameters)
