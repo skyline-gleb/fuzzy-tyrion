@@ -14,7 +14,9 @@
 class DataGenerator {
 public:
     DataGenerator();
-    std::list<std::string> randomlyGenerateData(const Type &type, const int numGeneration);
+    std::string randomlyGenerateString(const int len);
+    int randomlyGenerateInt();
+    float randomlyGenerateFloat();
 private:
     std::string genRandomString(const int len);
 
