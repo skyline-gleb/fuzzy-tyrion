@@ -20,7 +20,7 @@ std::string DataGenerator::randomlyGenerateString(const int len) {
     return str;
 }
 
-int DataGenerator::randomlyGenerateInt() {
+int DataGenerator::randomlyGenerateInt32() {
     srand(time(0));
     return (rand() << 30) | (rand() << 15) | rand();
 }
