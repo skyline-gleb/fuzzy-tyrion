@@ -2,5 +2,5 @@
 class Log(object):
 
 	@staticmethod
-	def write(message):
-		print(message)
+	def write(response):
+		print(response.method + ' ' + response.url + ' ' + str(response.status_code))
