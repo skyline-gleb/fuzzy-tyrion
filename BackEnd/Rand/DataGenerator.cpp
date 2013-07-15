@@ -19,16 +19,3 @@ std::string DataGenerator::randomlyGenerateString(const int len) {
     }
     return str;
 }
-
-int DataGenerator::randomlyGenerateInt() {
-    srand(time(0));
-    return (rand() << 30) | (rand() << 15) | rand();
-}
-
-float DataGenerator::randomlyGenerateFloat() {
-    srand(time(0));
-    const int MIN = -2;
-    const int MAX = 3;
-    const int PRECISION = 10000;
-    return MIN + (rand() % ((MAX - MIN) * PRECISION + 1)) / (float) PRECISION;
-}
