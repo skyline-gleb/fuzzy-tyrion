@@ -14,6 +14,6 @@ extern "C" {
     int generate_int32(const int _min = 0, const int _max = 1000)
     {
         DataGenerator gen;
-        return gen.randomlyGenerateInt32();
+        return gen.randomlyGenerateNumber<int>(_min, _max);
     }
 }
