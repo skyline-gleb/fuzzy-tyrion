@@ -22,7 +22,6 @@ AS=as
 
 # Macros
 CND_PLATFORM=GNU-Linux-x86
-CND_DLIB_EXT=so
 CND_CONF=Debug
 CND_DISTDIR=dist
 CND_BUILDDIR=build
@@ -36,6 +35,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 # Object Files
 OBJECTFILES= \
 	${OBJECTDIR}/Rand/DataGenerator.o \
+	${OBJECTDIR}/Tests/DataGeneratorTest.o \
 	${OBJECTDIR}/backend.o
 
 
@@ -53,25 +53,30 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=
+LDLIBSOPTIONS=-lcppunit
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
-	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libBackEnd.${CND_DLIB_EXT}
+	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libBackEnd.so
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libBackEnd.${CND_DLIB_EXT}: ${OBJECTFILES}
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libBackEnd.so: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
-	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libBackEnd.${CND_DLIB_EXT} ${OBJECTFILES} ${LDLIBSOPTIONS} -shared -fPIC
+	${LINK.cc} -shared -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libBackEnd.so -fPIC ${OBJECTFILES} ${LDLIBSOPTIONS} 
 
 ${OBJECTDIR}/Rand/DataGenerator.o: Rand/DataGenerator.cpp 
 	${MKDIR} -p ${OBJECTDIR}/Rand
 	${RM} $@.d
-	$(COMPILE.cc) -g -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/Rand/DataGenerator.o Rand/DataGenerator.cpp
+	$(COMPILE.cc) -g -I/usr/include/cppunit -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/Rand/DataGenerator.o Rand/DataGenerator.cpp
+
+${OBJECTDIR}/Tests/DataGeneratorTest.o: Tests/DataGeneratorTest.cpp 
+	${MKDIR} -p ${OBJECTDIR}/Tests
+	${RM} $@.d
+	$(COMPILE.cc) -g -I/usr/include/cppunit -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/Tests/DataGeneratorTest.o Tests/DataGeneratorTest.cpp
 
 ${OBJECTDIR}/backend.o: backend.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.cc) -g -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/backend.o backend.cpp
+	$(COMPILE.cc) -g -I/usr/include/cppunit -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/backend.o backend.cpp
 
 # Subprojects
 .build-subprojects:
@@ -79,7 +84,7 @@ ${OBJECTDIR}/backend.o: backend.cpp
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}
 	${RM} -r ${CND_BUILDDIR}/${CND_CONF}
-	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libBackEnd.${CND_DLIB_EXT}
+	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libBackEnd.so
 
 # Subprojects
 .clean-subprojects:
