@@ -4,11 +4,13 @@
     <logicalFolder name="SourceFiles"
                    displayName="Исходные файлы "
                    projectFiles="true">
+      <itemPath>Rand/DataGenerator.cpp</itemPath>
       <itemPath>backend.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="HeaderFiles"
                    displayName="Файлы заголовков"
                    projectFiles="true">
+      <itemPath>Rand/DataGenerator.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Файлы ресурсов"
