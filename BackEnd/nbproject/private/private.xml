@@ -5,10 +5,9 @@
         <activeConfIndexElem>0</activeConfIndexElem>
     </data>
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/1"/>
-    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
-    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/1">
-        <file>file:/home/user/Desktop/Git/fuzzy-tyrion/BackEnd/Rand/DataGenerator.cpp</file>
-        <file>file:/home/user/Desktop/Git/fuzzy-tyrion/BackEnd/backend.cpp</file>
-        <file>file:/home/user/Desktop/Git/fuzzy-tyrion/BackEnd/Rand/DataGenerator.h</file>
+<open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/1">
+        <file>file:/home/golovin/2GIS/fuzzy-tyrion/BackEnd/backend.cpp</file>
+        <file>file:/home/golovin/2GIS/fuzzy-tyrion/BackEnd/Tests/DataGeneratorTest.h</file>
+        <file>file:/home/golovin/2GIS/fuzzy-tyrion/BackEnd/Tests/DataGeneratorTest.cpp</file>
     </open-files>
 </project-private>
