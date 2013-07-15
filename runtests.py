@@ -1,6 +1,4 @@
-import sys
-sys.path.append("frontend/tests")
-from fuzzertest import FuzzerTestCase
+from frontend.tests import FuzzerTestCase
 import unittest
 
 

@@ -1,18 +1,17 @@
 import re
 import time
 import random
-from request import *
-from log import *
+from .http.request import *
+from frontend.log.log import *
 from itertools import chain
-from datagenerator import *
-from gen import DataGenerator
+from backend import DataGenerator
 
 
 class Fuzzer(object):
     def __init__(self, api_url, rps=10, headers={}, parameters={}):
-        self.api_url    = api_url
-        self.rps        = rps
-        self.headers    = headers
+        self.api_url = api_url
+        self.rps = rps
+        self.headers = headers
         self.parameters = parameters
 
     def test_methods(self, methods):
@@ -22,10 +21,10 @@ class Fuzzer(object):
                 time.sleep(1.0 / self.rps)
 
     def test_method(self, api_method, http_method, parameters):
-        data     = self.prepare_data(parameters)
-        payload  = dict(chain(self.parameters.items(), data.items()))
-        url      = self.make_url(self.api_url, api_method, payload)
-        request  = self.make_request(http_method, url, payload, self.headers)
+        data = self.prepare_data(parameters)
+        payload = dict(chain(self.parameters.items(), data.items()))
+        url = self.make_url(self.api_url, api_method, payload)
+        request = self.make_request(http_method, url, payload, self.headers)
         response = request.send()
         self.log(response)
 

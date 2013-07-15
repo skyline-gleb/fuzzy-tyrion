@@ -1,15 +1,14 @@
-import requests
-from response import *
+from frontend.vendor import requests
+from .response import Response
 
 
 class Request(object):
-
     def __init__(self, method, url):
-        self.method  = method.upper()
-        self.url     = url
+        self.method = method.upper()
+        self.url = url
         self.headers = {}
-        self.data    = {}
-        self.params  = {}
+        self.data = {}
+        self.params = {}
         self.timeout = 10
 
     def add_params(self, params):

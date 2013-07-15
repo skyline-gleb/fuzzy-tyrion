@@ -1,14 +1,4 @@
-import sys
-sys.path.append("backend")
-sys.path.append("frontend")
-sys.path.append("frontend/core")
-sys.path.append("frontend/config")
-sys.path.append("frontend/http")
-sys.path.append("frontend/log")
-sys.path.append("frontend/vendor")
-sys.path.append("frontend/utils")
-
-from fuzzer import Fuzzer
+from frontend import Fuzzer
 import unittest
 
 
@@ -21,7 +11,6 @@ class FuzzerTestCase(unittest.TestCase):
         parameters = {'where': {'action': 'generate', 'required': True, 'value': 'Novosibirsk', 'data_type': 'string'}}
         data = self.fuzzer.prepare_data(parameters)
         self.assertEqual(['where'], list(data.keys()))
-        #self.assertEqual(1, 0)
 
     def test_prepare_data_mutate(self):
         parameters = {'where': {'action': 'mutate', 'required': True, 'value': 'Novosibirsk', 'data_type': 'string'},

@@ -1,18 +1,8 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
-import sys
-sys.path.append("backend")
-sys.path.append("frontend")
-sys.path.append("frontend/core")
-sys.path.append("frontend/config")
-sys.path.append("frontend/http")
-sys.path.append("frontend/log")
-sys.path.append("frontend/vendor")
-sys.path.append("frontend/utils")
-
-from app import *
-from config import *
-from fuzzer import *
+from frontend import App
+from frontend import Config
+from frontend import Fuzzer
 
 
 def main():
@@ -27,4 +17,4 @@ def main():
 
 
 if __name__ == '__main__':
-    main();
+    main()
