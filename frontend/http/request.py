@@ -4,21 +4,27 @@ from response import *
 
 class Request(object):
 
-    def __init__(self, method, url, fields={}, headers={}, timeout=10):
-        self.method = method.upper()
-        self.url = url
+    def __init__(self, method, url):
+        self.method  = method.upper()
+        self.url     = url
+        self.headers = {}
+        self.data    = {}
+        self.params  = {}
+        self.timeout = 10
+
+    def add_params(self, params):
+        if self.method in ['POST', 'PUT', 'PATCH', 'TRACE']:
+            self.data = params
+        else:
+            self.params = params
+
+    def add_headers(self, headers):
         self.headers = headers
+
+    def set_timeout(self, timeout):
         self.timeout = timeout
 
-        if method in ['POST', 'PUT', 'PATCH', 'TRACE']:
-            self.data = fields
-            self.params = {}
-        else:
-            self.data = {}
-            self.params = fields
-
     def send(self):
-
         try:
             r = requests.request(self.method, self.url, headers=self.headers,
                                  params=self.params, data=self.data, timeout=self.timeout)
