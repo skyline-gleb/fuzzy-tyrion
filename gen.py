@@ -1,16 +1,15 @@
 import os
 from ctypes import *
-from random import randint
 
-lib = cdll.LoadLibrary('./example.so')
 class DataGenerator:
 	def __init__(self):
-		lib.return_string.restype = c_char_p
-		lib.return_string.argtypes = [c_char_p]
-		lib.generate_int32 = c_int
-	def getString(self, lenght = 10):
-		name = create_string_buffer("TIMMAH!")
-		return lib.return_string(name)
+		lib = cdll.LoadLibrary('./libBackEnd.so')
+		lib.generateString.restype = c_char_p
+		lib.generateString.argtypes = [c_int]
+		lib.generateInt32.restype = c_int
+		lib.generateInt32.argtypes = [c_int, c_int]
+	def getString(self, length = 10):
+		return lib.generateString(length)
 	def getInteger32(self, minInt = 0, maxInt = 1000):
-		return randint(minInt, maxInt)
+		return lib.generateInt32(minInt, maxInt)
 
