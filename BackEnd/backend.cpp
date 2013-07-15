@@ -1,9 +1,19 @@
-#include "DataGenerator.h"
+#include "Rand/DataGenerator.h"
 
 
-extern "C"
-char * stringGenerate(char *_s) {
+extern "C" {
+
+    char * generate_string(const int _length = 10) {
+
+        DataGenerator gen;
+        std::string str = (gen.randomlyGenerateString(_length));
+        char* pres = (char*)str.c_str();
+        return pres;
+    }
     
-    DataGenerator gen;
-    return (gen.randomlyGenerateData(_s);)
+    int generate_int32(const int _min = 0, const int _max = 1000)
+    {
+        DataGenerator gen;
+        return gen.randomlyGenerateNumber<int>(_min, _max);
+    }
 }
