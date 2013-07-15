@@ -3,4 +3,8 @@ compiler:
   - g++
   - clang
 # Change this to your needs
+branches:
+  only:
+    -master
+    -develop
 script: ./configure && make
