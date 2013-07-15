@@ -3,7 +3,7 @@ from ctypes import *
 
 class DataGenerator:
 	def __init__(self):
-		self.lib = cdll.LoadLibrary('backend/libBackEnd.so')
+		self.lib = cdll.LoadLibrary('./libBackEnd.so')
 		self.lib.generateString.restype = c_char_p
 		self.lib.generateString.argtypes = [c_int]
 		self.lib.generateInt32.restype = c_int

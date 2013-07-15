@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 
 import sys
-sys.path.append("backend")
 sys.path.append("frontend")
 sys.path.append("frontend/core")
 sys.path.append("frontend/config")
