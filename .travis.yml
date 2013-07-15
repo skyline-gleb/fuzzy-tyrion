@@ -8,4 +8,4 @@ branches:
     -master
     -develop
     -dima
-script: ./configure && make
+script: ./fuzzy-tyrion/BackEnd/Makefile
