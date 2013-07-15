@@ -5,7 +5,6 @@ HTTP API Fuzzer
 
 Формат запуска
 --------------
-
 ::
     ./python run.py --config="config.json" --report="report.xml" --log="log.txt"
 
