@@ -14,16 +14,17 @@ from app import *
 from config import *
 from fuzzer import *
 
+
 def main():
-	App.init()
+    App.init()
 
-	Config.load(App.args.config)
+    Config.load(App.args.config)
 
-	fuzzer = Fuzzer(Config.api_url, Config.rps,
-					Config.headers, Config.parameters)
+    fuzzer = Fuzzer(Config.api_url, Config.rps,
+                    Config.headers, Config.parameters)
 
-	fuzzer.test_methods(Config.methods)
+    fuzzer.test_methods(Config.methods)
 
 
 if __name__ == '__main__':
-	main();
+    main();

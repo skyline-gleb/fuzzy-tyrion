@@ -1,6 +1,5 @@
 class Response(object):
 
-
     def __init__(self, error_msg=None, request=None, status_code=None,
                  status_msg=None, encoding=None, time=None, content=None):
         self.request = request

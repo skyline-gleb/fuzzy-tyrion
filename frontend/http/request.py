@@ -4,7 +4,6 @@ from response import *
 
 class Request(object):
 
-
     def __init__(self, method, url, fields={}, headers={}, timeout=10):
         self.method = method.upper()
         self.url = url
@@ -30,4 +29,3 @@ class Request(object):
         request = {'method': self.method, 'url': r.request.url, 'body': r.request.body}
         return Response(request=request, status_code=r.status_code, status_msg=r.reason,
                         encoding=r.encoding, time=r.elapsed, content=r.text.encode(r.encoding))
-
