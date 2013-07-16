@@ -8,7 +8,7 @@ extern "C" {
         assert(_length > 0 && _length <= 2147483647);
         
         DataGenerator gen;
-        std::string str = (gen.randomlyGenerateString(_length));
+        std::string str = (gen.randomlyGenerateString<std::string>(_length));
         
         assert(str.size() > 0 && str.size() <= _length);
         

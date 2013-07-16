@@ -14,7 +14,8 @@
 class DataGenerator {
 public:
     DataGenerator();
-    std::string randomlyGenerateString(const int len);
+    template < typename T>
+    T randomlyGenerateString(const int len);
 
     template< typename T >
     T randomlyGenerateNumber(T min, T max) {
