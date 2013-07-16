@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+import sys
 from frontend import App
 from frontend import Config
 from frontend import Fuzzer
@@ -8,7 +9,11 @@ from frontend import Fuzzer
 def main():
     App.init()
 
-    Config.load(App.args.config)
+    try:
+        Config.load(App.args.config)
+    except Exception as e:
+        print(e)
+        sys.exit()
 
     fuzzer = Fuzzer(Config.api_url, Config.rps,
                     Config.headers, Config.parameters)
