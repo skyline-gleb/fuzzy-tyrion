@@ -3,10 +3,15 @@ HTTP API Fuzzer
 
 Консольная утилита для фаззинга HTTP API
 
-Формат запуска
+Запуск
 --------------
 ::
-    ./python run.py --config="config.json" --report="report.xml" --log="log.txt"
+    python run.py --config="config.json" --report="report.xml" --log="log.txt"
+
+--config, -c  - задать конфигурационный файл
+--report, -r  - задать файл отчета
+--log, -l     - задать файл логов
+--verbose, -v - активировать расширенное логирование
 
 Конфигурационный файл
 ---------------------
@@ -18,7 +23,9 @@ HTTP API Fuzzer
 
         "rps": 4,
 
-        "headers": {},
+        "headers": {
+            "Accept": "application/json"
+        },
 
         "parameters": {
             "access_token": "533bacf01e11f55b536a565b57531ac114461ae8736d6506a3"
@@ -39,23 +46,24 @@ HTTP API Fuzzer
                         "required": false,
                         "data_type": "string",
                         "value": "uid,first_name,last_name",
-                        "action": "generate"
+                        "action": "mutate"
                     }
                 }
             }
         }
     }
 
-api_url    - API URL
+api_url     - [string] API URL
+rps         - [int] максимальное количество запросов в секунду
+headers     - [object] заголовки, отправляемые при каждом запросе
+parameters  - [object] параметры, отправляемые при каждом запросе
+methods     - [object] тестируемые методы API
 
-rps        - максимальное количество запросов в секунду
+    http_method - [string] HTTP метод (GET', 'DELETE', 'PATCH', 'POST', 'PUT')
+    count       - [int] количество запросов
+    parameters  - [object] параметры API метода
 
-headers    - заголовки, отправляемые при каждом запросе, например:
-::
-    {"Accept": "application/json"}
-
-parameters - параметры, отправляемые при каждом запросе, например:
-::
-    {"api_key": "abc1234"}
-
-methods    - тестируемые методы API
+        required  - [bool] необходимость параметра
+        data_type - [string] тип параметра ('string', 'int', 'float')
+        value     - [mixed] значение параметра
+        action    - [string] действие над значением ('skip', 'generate', 'mutate')
