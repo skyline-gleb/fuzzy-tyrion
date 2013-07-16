@@ -8,4 +8,5 @@ branches:
     -master
     -develop
     -dima
+    -frontend-dev
 script: make && make check
