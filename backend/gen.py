@@ -4,7 +4,8 @@ from ctypes import *
 
 class DataGenerator:
     def __init__(self):
-        self.lib = cdll.LoadLibrary(os.path.dirname(__file__) + '/libBackEnd.so')
+        dir_path = os.path.dirname(os.path.abspath(__file__))
+        self.lib = cdll.LoadLibrary(os.path.join(dir_path, 'libBackEnd.so'))
         self.lib.generateString.restype = c_char_p
         self.lib.generateString.argtypes = [c_int]
         self.lib.generateInt32.restype = c_int
