@@ -4,7 +4,6 @@ import unittest
 
 
 class FuzzerTestCase(unittest.TestCase):
-    
     @classmethod
     def setUpClass(cls):
         cls.fuzzer = Fuzzer('http://api.localhost/v{version}/')
@@ -20,6 +19,11 @@ class FuzzerTestCase(unittest.TestCase):
         data = self.fuzzer.prepare_data(parameters)
         self.assertNotIsInstance(data['where'], int)
         self.assertIsInstance(data['test'], int)
+
+    def test_prepare_data_empty(self):
+        parameters = {}
+        data = self.fuzzer.prepare_data(parameters)
+        self.assertEqual(data, {})
 
     def test_make_url(self):
         expected_url = 'http://api.localhost/v1/categories/cat1/items/1234'

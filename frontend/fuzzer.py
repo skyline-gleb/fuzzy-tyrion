@@ -58,6 +58,8 @@ class Fuzzer(object):
         return data
 
     def log(self, response):
-        if ( App.args.verbose ) or (response.error_msg != None):
-            App.log.addLog({"status":response.status_code, "message":response.request["url"], "name":response.request['method']})
+        if ( App.args.verbose ) or (response.error_msg != None):
+
+            App.log.addLog({"status":response.status_code, "message":response.request["url"], "name":response.request['method']})
+
             App.log.printLog()
