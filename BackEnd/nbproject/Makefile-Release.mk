@@ -34,6 +34,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/Mut/DataMutator.o \
 	${OBJECTDIR}/Rand/DataGenerator.o \
 	${OBJECTDIR}/backend.o
 
@@ -42,7 +43,8 @@ TESTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}/tests
 
 # Test Files
 TESTFILES= \
-	${TESTDIR}/TestFiles/f1
+	${TESTDIR}/TestFiles/f1 \
+	${TESTDIR}/TestFiles/f2
 
 # C Compiler Flags
 CFLAGS=
@@ -68,6 +70,11 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libBackEnd.so: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -shared -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libBackEnd.so -fPIC ${OBJECTFILES} ${LDLIBSOPTIONS} 
 
+${OBJECTDIR}/Mut/DataMutator.o: Mut/DataMutator.cpp 
+	${MKDIR} -p ${OBJECTDIR}/Mut
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/Mut/DataMutator.o Mut/DataMutator.cpp
+
 ${OBJECTDIR}/Rand/DataGenerator.o: Rand/DataGenerator.cpp 
 	${MKDIR} -p ${OBJECTDIR}/Rand
 	${RM} $@.d
@@ -87,18 +94,47 @@ ${TESTDIR}/TestFiles/f1: ${TESTDIR}/Tests/DataGeneratorTest.o ${TESTDIR}/Tests/n
 	${MKDIR} -p ${TESTDIR}/TestFiles
 	${LINK.cc}   -o ${TESTDIR}/TestFiles/f1 $^ ${LDLIBSOPTIONS} 
 
+${TESTDIR}/TestFiles/f2: ${TESTDIR}/Tests/DataMutatorTest.o ${TESTDIR}/Tests/dataMutatorTestRunner.o ${OBJECTFILES:%.o=%_nomain.o}
+	${MKDIR} -p ${TESTDIR}/TestFiles
+	${LINK.cc}   -o ${TESTDIR}/TestFiles/f2 $^ ${LDLIBSOPTIONS} 
+
 
 ${TESTDIR}/Tests/DataGeneratorTest.o: Tests/DataGeneratorTest.cpp 
 	${MKDIR} -p ${TESTDIR}/Tests
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -I. -I. -MMD -MP -MF $@.d -o ${TESTDIR}/Tests/DataGeneratorTest.o Tests/DataGeneratorTest.cpp
+	$(COMPILE.cc) -O2 -I. -I. -I. -MMD -MP -MF $@.d -o ${TESTDIR}/Tests/DataGeneratorTest.o Tests/DataGeneratorTest.cpp
 
 
 ${TESTDIR}/Tests/newtestrunner.o: Tests/newtestrunner.cpp 
 	${MKDIR} -p ${TESTDIR}/Tests
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -I. -I. -MMD -MP -MF $@.d -o ${TESTDIR}/Tests/newtestrunner.o Tests/newtestrunner.cpp
+	$(COMPILE.cc) -O2 -I. -I. -I. -MMD -MP -MF $@.d -o ${TESTDIR}/Tests/newtestrunner.o Tests/newtestrunner.cpp
 
+
+${TESTDIR}/Tests/DataMutatorTest.o: Tests/DataMutatorTest.cpp 
+	${MKDIR} -p ${TESTDIR}/Tests
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -I. -MMD -MP -MF $@.d -o ${TESTDIR}/Tests/DataMutatorTest.o Tests/DataMutatorTest.cpp
+
+
+${TESTDIR}/Tests/dataMutatorTestRunner.o: Tests/dataMutatorTestRunner.cpp 
+	${MKDIR} -p ${TESTDIR}/Tests
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -I. -MMD -MP -MF $@.d -o ${TESTDIR}/Tests/dataMutatorTestRunner.o Tests/dataMutatorTestRunner.cpp
+
+
+${OBJECTDIR}/Mut/DataMutator_nomain.o: ${OBJECTDIR}/Mut/DataMutator.o Mut/DataMutator.cpp 
+	${MKDIR} -p ${OBJECTDIR}/Mut
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/Mut/DataMutator.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} $@.d;\
+	    $(COMPILE.cc) -O2 -fPIC  -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/Mut/DataMutator_nomain.o Mut/DataMutator.cpp;\
+	else  \
+	    ${CP} ${OBJECTDIR}/Mut/DataMutator.o ${OBJECTDIR}/Mut/DataMutator_nomain.o;\
+	fi
 
 ${OBJECTDIR}/Rand/DataGenerator_nomain.o: ${OBJECTDIR}/Rand/DataGenerator.o Rand/DataGenerator.cpp 
 	${MKDIR} -p ${OBJECTDIR}/Rand
@@ -131,6 +167,7 @@ ${OBJECTDIR}/backend_nomain.o: ${OBJECTDIR}/backend.o backend.cpp
 	@if [ "${TEST}" = "" ]; \
 	then  \
 	    ${TESTDIR}/TestFiles/f1 || true; \
+	    ${TESTDIR}/TestFiles/f2 || true; \
 	else  \
 	    ./${TEST} || true; \
 	fi

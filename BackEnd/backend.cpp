@@ -1,4 +1,5 @@
 #include "Rand/DataGenerator.h"
+#include "Mut/DataMutator.h"
 #include <assert.h>
 
 extern "C" {
@@ -68,6 +69,15 @@ extern "C" {
     long double generate_long_double(const long double _min = 0, const long double _max = 1000){
         DataGenerator gen;
         long double res = gen.randomlyGenerateNumber<long double>(_min, _max);
+        return res;
+    }
+    
+    int mutate_int32(int _value, int _numberOfMutations = 10)
+    {
+        DataMutator mut;
+        
+        int res = mut.mutateInt32(_value, _numberOfMutations);
+        
         return res;
     }
 }
