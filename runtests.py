@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 
 from frontend.tests import FuzzerTestCase
-from frontend.tests.testconfigvalidator import TestCheck
 from frontend.tests.testLogManager import TestLogManager
+from frontend.tests.config import TestCheck
 import unittest
 
 
