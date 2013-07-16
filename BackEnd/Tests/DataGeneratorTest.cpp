@@ -38,3 +38,23 @@ void DataGeneratorTest::testRandomlyGenerateString()
     }
 }
 
+void DataGeneratorTest::testRandomlyGenerateInt32()
+{
+    DataGenerator dataGenerator;
+    CPPUNIT_ASSERT(dataGenerator.randomlyGenerateNumber<int>(1, 1) == 1);
+}
+
+void DataGeneratorTest::testRandomlyGenerateFloat()
+{
+    DataGenerator dataGenerator;
+    CPPUNIT_ASSERT( (dataGenerator.randomlyGenerateNumber<float>(10.f, 10.f) - 10) <= 1 );
+
+}
+
+void DataGeneratorTest::testRandomlyGenerateDouble()
+{
+        DataGenerator dataGenerator;
+    CPPUNIT_ASSERT( (dataGenerator.randomlyGenerateNumber<double>(10.d, 10.d) - 10) <= 1 );
+
+}
+

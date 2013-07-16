@@ -1,8 +1,8 @@
 /*
  * File:   DataGeneratorTest.h
- * Author: golovin
+ * Author: user
  *
- * Created on 16.07.2013, 9:02:27
+ * Created on Jul 15, 2013, 1:33:43 PM
  */
 
 #ifndef DATAGENERATORTEST_H
@@ -13,7 +13,10 @@
 class DataGeneratorTest : public CPPUNIT_NS::TestFixture {
     CPPUNIT_TEST_SUITE(DataGeneratorTest);
 
+    CPPUNIT_TEST(testRandomlyGenerateInt32);
     CPPUNIT_TEST(testRandomlyGenerateString);
+    CPPUNIT_TEST(testRandomlyGenerateFloat);
+    CPPUNIT_TEST(testRandomlyGenerateDouble);
 
     CPPUNIT_TEST_SUITE_END();
 
@@ -24,7 +27,10 @@ public:
     void tearDown();
 
 private:
+    void testRandomlyGenerateInt32();
     void testRandomlyGenerateString();
+    void testRandomlyGenerateFloat();
+    void testRandomlyGenerateDouble();
 
 };
 
