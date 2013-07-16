@@ -1,4 +1,5 @@
 #include "Rand/DataGenerator.h"
+#include "Mut/DataMutator.h"
 #include <assert.h>
 
 extern "C" {
@@ -30,6 +31,15 @@ extern "C" {
         DataGenerator gen;
         int res = gen.randomlyGenerateNumber<int>(_min, _max);
         assert(res >= _min && res <= _max);
+        
+        return res;
+    }
+    
+    int mutate_int32(int _value, int _numberOfMutations = 10)
+    {
+        DataMutator mut;
+        
+        int res = mut.mutateInt32(_value, _numberOfMutations);
         
         return res;
     }

@@ -34,6 +34,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/Mut/DataMutator.o \
 	${OBJECTDIR}/Rand/DataGenerator.o \
 	${OBJECTDIR}/backend.o
 
@@ -68,6 +69,11 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libBackEnd.so: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -shared -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libBackEnd.so -fPIC ${OBJECTFILES} ${LDLIBSOPTIONS} 
 
+${OBJECTDIR}/Mut/DataMutator.o: Mut/DataMutator.cpp 
+	${MKDIR} -p ${OBJECTDIR}/Mut
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/Mut/DataMutator.o Mut/DataMutator.cpp
+
 ${OBJECTDIR}/Rand/DataGenerator.o: Rand/DataGenerator.cpp 
 	${MKDIR} -p ${OBJECTDIR}/Rand
 	${RM} $@.d
@@ -99,6 +105,19 @@ ${TESTDIR}/Tests/newtestrunner.o: Tests/newtestrunner.cpp
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -I. -I. -MMD -MP -MF $@.d -o ${TESTDIR}/Tests/newtestrunner.o Tests/newtestrunner.cpp
 
+
+${OBJECTDIR}/Mut/DataMutator_nomain.o: ${OBJECTDIR}/Mut/DataMutator.o Mut/DataMutator.cpp 
+	${MKDIR} -p ${OBJECTDIR}/Mut
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/Mut/DataMutator.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} $@.d;\
+	    $(COMPILE.cc) -O2 -fPIC  -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/Mut/DataMutator_nomain.o Mut/DataMutator.cpp;\
+	else  \
+	    ${CP} ${OBJECTDIR}/Mut/DataMutator.o ${OBJECTDIR}/Mut/DataMutator_nomain.o;\
+	fi
 
 ${OBJECTDIR}/Rand/DataGenerator_nomain.o: ${OBJECTDIR}/Rand/DataGenerator.o Rand/DataGenerator.cpp 
 	${MKDIR} -p ${OBJECTDIR}/Rand
