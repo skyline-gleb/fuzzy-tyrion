@@ -12,7 +12,7 @@
     "methods": {
         
         "search#filial": {
-            "http_method": "POST",
+            "http_method": "GET",
             "count": 2,
             "parameters": {
                 "type": {
@@ -85,7 +85,7 @@
         },
         
         "search#project": {
-            "http_method": "POST",
+            "http_method": "GET",
             "count": 2,
             "parameters": {
                 "type": {
@@ -122,7 +122,7 @@
         },
 
         "search#rubric": {
-            "http_method": "POST",
+            "http_method": "GET",
             "count": 2,
             "parameters": {
                 "type": {
