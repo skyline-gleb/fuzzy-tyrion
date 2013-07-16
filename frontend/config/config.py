@@ -9,7 +9,12 @@ class Config(object):
             data = json.loads(config_file.read())
 
         obj = Check(data)
-        if obj.Run() == -1:
+        try:
+            obj.Run()
+        except Exception:
+            value = -1
+        
+        if value == -1:
             print("Error")
 
         for item in data:
