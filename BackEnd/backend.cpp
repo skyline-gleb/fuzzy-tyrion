@@ -1,6 +1,8 @@
 #include "Rand/DataGenerator.h"
 #include "Mut/DataMutator.h"
 #include <assert.h>
+#include <limits.h>
+#include <float.h>
 
 extern "C" {
 
