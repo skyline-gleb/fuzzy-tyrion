@@ -2,6 +2,7 @@
 
 from frontend.tests import FuzzerTestCase
 from frontend.tests.testconfigvalidator import TestCheck
+from frontend.tests.testLogManager import TestLogManager
 import unittest
 
 
@@ -9,6 +10,7 @@ def suite():
     suite = unittest.TestSuite()
     suite.addTest(unittest.makeSuite(FuzzerTestCase))
     suite.addTest(unittest.makeSuite(TestCheck))
+    suite.addTest(unittest.makeSuite(TestLogManager))
     return suite
 
 if __name__ == '__main__':

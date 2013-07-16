@@ -37,6 +37,7 @@ class LogManager:
         self.__logErrors.append(element)
         self.__logJUNIT.append(element)
         self.__logFile.append(element)
+        return self.__logErrors
  
     def __seveJUNIT(self, tree):
         root = tree.getroot()
