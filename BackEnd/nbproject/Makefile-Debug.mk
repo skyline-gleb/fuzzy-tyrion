@@ -43,7 +43,8 @@ TESTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}/tests
 
 # Test Files
 TESTFILES= \
-	${TESTDIR}/TestFiles/f1
+	${TESTDIR}/TestFiles/f1 \
+	${TESTDIR}/TestFiles/f2
 
 # C Compiler Flags
 CFLAGS=
@@ -93,17 +94,33 @@ ${TESTDIR}/TestFiles/f1: ${TESTDIR}/Tests/DataGeneratorTest.o ${TESTDIR}/Tests/n
 	${MKDIR} -p ${TESTDIR}/TestFiles
 	${LINK.cc}   -o ${TESTDIR}/TestFiles/f1 $^ ${LDLIBSOPTIONS} -lcppunit 
 
+${TESTDIR}/TestFiles/f2: ${TESTDIR}/tests/DataMutatorTest.o ${TESTDIR}/tests/newtestrunner.o ${OBJECTFILES:%.o=%_nomain.o}
+	${MKDIR} -p ${TESTDIR}/TestFiles
+	${LINK.cc}   -o ${TESTDIR}/TestFiles/f2 $^ ${LDLIBSOPTIONS} -lcppunit 
+
 
 ${TESTDIR}/Tests/DataGeneratorTest.o: Tests/DataGeneratorTest.cpp 
 	${MKDIR} -p ${TESTDIR}/Tests
 	${RM} $@.d
-	$(COMPILE.cc) -g -I. -I. -MMD -MP -MF $@.d -o ${TESTDIR}/Tests/DataGeneratorTest.o Tests/DataGeneratorTest.cpp
+	$(COMPILE.cc) -g -I. -I. -I. -MMD -MP -MF $@.d -o ${TESTDIR}/Tests/DataGeneratorTest.o Tests/DataGeneratorTest.cpp
 
 
 ${TESTDIR}/Tests/newtestrunner.o: Tests/newtestrunner.cpp 
 	${MKDIR} -p ${TESTDIR}/Tests
 	${RM} $@.d
-	$(COMPILE.cc) -g -I. -I. -MMD -MP -MF $@.d -o ${TESTDIR}/Tests/newtestrunner.o Tests/newtestrunner.cpp
+	$(COMPILE.cc) -g -I. -I. -I. -MMD -MP -MF $@.d -o ${TESTDIR}/Tests/newtestrunner.o Tests/newtestrunner.cpp
+
+
+${TESTDIR}/tests/DataMutatorTest.o: tests/DataMutatorTest.cpp 
+	${MKDIR} -p ${TESTDIR}/tests
+	${RM} $@.d
+	$(COMPILE.cc) -g -I. -MMD -MP -MF $@.d -o ${TESTDIR}/tests/DataMutatorTest.o tests/DataMutatorTest.cpp
+
+
+${TESTDIR}/tests/newtestrunner.o: tests/newtestrunner.cpp 
+	${MKDIR} -p ${TESTDIR}/tests
+	${RM} $@.d
+	$(COMPILE.cc) -g -I. -MMD -MP -MF $@.d -o ${TESTDIR}/tests/newtestrunner.o tests/newtestrunner.cpp
 
 
 ${OBJECTDIR}/Mut/DataMutator_nomain.o: ${OBJECTDIR}/Mut/DataMutator.o Mut/DataMutator.cpp 
@@ -150,6 +167,7 @@ ${OBJECTDIR}/backend_nomain.o: ${OBJECTDIR}/backend.o backend.cpp
 	@if [ "${TEST}" = "" ]; \
 	then  \
 	    ${TESTDIR}/TestFiles/f1 || true; \
+	    ${TESTDIR}/TestFiles/f2 || true; \
 	else  \
 	    ./${TEST} || true; \
 	fi
