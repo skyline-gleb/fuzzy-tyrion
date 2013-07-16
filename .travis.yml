@@ -2,11 +2,4 @@ language: cpp
 compiler:
   - g++
   - clang
-# Change this to your needs
-branches:
-  only:
-    -master
-    -develop
-    -dima
-    -frontend-dev
 script: make && make check
