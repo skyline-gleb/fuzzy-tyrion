@@ -26,7 +26,7 @@
         <runcommandpicklist>
           <runcommandpicklistitem>"${OUTPUT_PATH}"</runcommandpicklistitem>
         </runcommandpicklist>
-        <runcommand>build/Debug/GNU-Linux-x86/tests/TestFiles/f1</runcommand>
+        <runcommand>"${OUTPUT_PATH}"</runcommand>
         <rundir></rundir>
         <buildfirst>true</buildfirst>
         <terminal-type>0</terminal-type>
@@ -35,7 +35,7 @@
         </environment>
       </runprofile>
     </conf>
-    <conf name="Release" type="2">
+    <conf name="Release" type="1">
       <toolsSet>
         <developmentServer>localhost</developmentServer>
         <platform>2</platform>

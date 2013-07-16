@@ -24,7 +24,7 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 
 
 # Project Name
-PROJECTNAME=BackEnd
+PROJECTNAME=DataGenerationLibrary
 
 # Active Configuration
 DEFAULTCONF=Debug

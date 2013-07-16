@@ -1,40 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configurationDescriptor version="89">
   <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
-    <logicalFolder name="SourceFiles"
-                   displayName="Исходные файлы "
-                   projectFiles="true">
-      <itemPath>Rand/DataGenerator.cpp</itemPath>
-      <itemPath>backend.cpp</itemPath>
-    </logicalFolder>
     <logicalFolder name="HeaderFiles"
-                   displayName="Файлы заголовков"
+                   displayName="Header Files"
                    projectFiles="true">
       <itemPath>Rand/DataGenerator.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
-                   displayName="Файлы ресурсов"
+                   displayName="Resource Files"
                    projectFiles="true">
     </logicalFolder>
+    <logicalFolder name="SourceFiles"
+                   displayName="Source Files"
+                   projectFiles="true">
+      <itemPath>Rand/DataGenerator.cpp</itemPath>
+    </logicalFolder>
     <logicalFolder name="TestFiles"
-                   displayName="Файлы тестов"
+                   displayName="Test Files"
                    projectFiles="false"
                    kind="TEST_LOGICAL_FOLDER">
       <logicalFolder name="f1"
-                     displayName="CppUnitTests"
+                     displayName="New CppUnit Test"
                      projectFiles="true"
                      kind="TEST">
-        <itemPath>Tests/DataGeneratorTest.cpp</itemPath>
-        <itemPath>Tests/DataGeneratorTest.h</itemPath>
-        <itemPath>Tests/newtestrunner.cpp</itemPath>
+        <itemPath>tests/DataGeneratorTest.cpp</itemPath>
+        <itemPath>tests/DataGeneratorTest.h</itemPath>
+        <itemPath>tests/newtestrunner.cpp</itemPath>
       </logicalFolder>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
-                   displayName="Важные файлы"
+                   displayName="Important Files"
                    projectFiles="false"
                    kind="IMPORTANT_FILES_FOLDER">
       <itemPath>Makefile</itemPath>
     </logicalFolder>
+    <itemPath>backend.cpp</itemPath>
   </logicalFolder>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
@@ -46,25 +46,6 @@
         <rebuildPropChanged>false</rebuildPropChanged>
       </toolsSet>
       <compileType>
-      </compileType>
-      <folder path="TestFiles/f1">
-        <cTool>
-          <incDir>
-            <pElem>.</pElem>
-          </incDir>
-        </cTool>
-        <ccTool>
-          <incDir>
-            <pElem>.</pElem>
-          </incDir>
-        </ccTool>
-        <linkerTool>
-          <output>${TESTDIR}/TestFiles/f1</output>
-          <linkerLibItems>
-            <linkerLibStdlibItem>CppUnit</linkerLibStdlibItem>
-          </linkerLibItems>
-        </linkerTool>
-<<<<<<< HEAD
       </compileType>
       <item path="Rand/DataGenerator.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -83,21 +64,17 @@
           <output>${TESTDIR}/TestFiles/f1</output>
           <linkerLibItems>
             <linkerOptionItem>`cppunit-config --libs`</linkerOptionItem>
-            <linkerOptionItem>`cppunit-config --libs`</linkerOptionItem>
           </linkerLibItems>
         </linkerTool>
       </folder>
-      <item path="tests/newtestclass1.cpp" ex="false" tool="1" flavor2="0">
+      <item path="tests/DataGeneratorTest.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="tests/newtestclass1.h" ex="false" tool="3" flavor2="0">
+      <item path="tests/DataGeneratorTest.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="tests/newtestrunner1.cpp" ex="false" tool="1" flavor2="0">
+      <item path="tests/newtestrunner.cpp" ex="false" tool="1" flavor2="0">
       </item>
-=======
-      </folder>
->>>>>>> develop
     </conf>
-    <conf name="Release" type="2">
+    <conf name="Release" type="1">
       <toolsSet>
         <remote-sources-mode>LOCAL_SOURCES</remote-sources-mode>
         <compilerSet>default</compilerSet>
@@ -118,7 +95,6 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
-<<<<<<< HEAD
       <item path="Rand/DataGenerator.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Rand/DataGenerator.h" ex="false" tool="3" flavor2="0">
@@ -136,33 +112,15 @@
           <output>${TESTDIR}/TestFiles/f1</output>
           <linkerLibItems>
             <linkerOptionItem>`cppunit-config --libs`</linkerOptionItem>
-            <linkerOptionItem>`cppunit-config --libs`</linkerOptionItem>
           </linkerLibItems>
         </linkerTool>
       </folder>
-      <item path="tests/newtestclass1.cpp" ex="false" tool="1" flavor2="0">
+      <item path="tests/DataGeneratorTest.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="tests/newtestclass1.h" ex="false" tool="3" flavor2="0">
+      <item path="tests/DataGeneratorTest.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="tests/newtestrunner1.cpp" ex="false" tool="1" flavor2="0">
+      <item path="tests/newtestrunner.cpp" ex="false" tool="1" flavor2="0">
       </item>
-=======
-      <folder path="TestFiles/f1">
-        <cTool>
-          <incDir>
-            <pElem>.</pElem>
-          </incDir>
-        </cTool>
-        <ccTool>
-          <incDir>
-            <pElem>.</pElem>
-          </incDir>
-        </ccTool>
-        <linkerTool>
-          <output>${TESTDIR}/TestFiles/f1</output>
-        </linkerTool>
-      </folder>
->>>>>>> develop
     </conf>
   </confs>
 </configurationDescriptor>
