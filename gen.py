@@ -12,10 +12,14 @@ class DataGenerator:
 		self.lib.generate_wstring.argtypes = [c_int]
 		self.lib.generate_int32.restype = c_int
 		self.lib.generate_int32.argtypes = [c_int, c_int]
+		self.lib.mutate_int32.restype = c_int
+		self.lib.mutate_int32.argtypes = [c_int, c_int]
 	def getString(self, length = 10):
 		return self.lib.generate_string(length)
 	def getInteger32(self, minInt = 0, maxInt = 1000):
 		return self.lib.generate_int32(minInt, maxInt)
 	def getUnicodeString(self, length = 10):
 		return self.lib.generate_wstring(length)
+	def getMutationInteger32(self, value, numberOfMutations = 10):
+		return self.mutate_in32.argtypes(value, numberOfMutations)
 
