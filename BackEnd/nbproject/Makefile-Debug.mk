@@ -94,9 +94,9 @@ ${TESTDIR}/TestFiles/f1: ${TESTDIR}/Tests/DataGeneratorTest.o ${TESTDIR}/Tests/n
 	${MKDIR} -p ${TESTDIR}/TestFiles
 	${LINK.cc}   -o ${TESTDIR}/TestFiles/f1 $^ ${LDLIBSOPTIONS} -lcppunit 
 
-${TESTDIR}/TestFiles/f2: ${TESTDIR}/tests/DataMutatorTest.o ${TESTDIR}/tests/newtestrunner.o ${OBJECTFILES:%.o=%_nomain.o}
+${TESTDIR}/TestFiles/f2: ${TESTDIR}/Tests/DataMutatorTest.o ${TESTDIR}/Tests/dataMutatorTestRunner.o ${OBJECTFILES:%.o=%_nomain.o}
 	${MKDIR} -p ${TESTDIR}/TestFiles
-	${LINK.cc}   -o ${TESTDIR}/TestFiles/f2 $^ ${LDLIBSOPTIONS} -lcppunit 
+	${LINK.cc}   -o ${TESTDIR}/TestFiles/f2 $^ ${LDLIBSOPTIONS} -lcppunit -lcppunit 
 
 
 ${TESTDIR}/Tests/DataGeneratorTest.o: Tests/DataGeneratorTest.cpp 
@@ -111,16 +111,16 @@ ${TESTDIR}/Tests/newtestrunner.o: Tests/newtestrunner.cpp
 	$(COMPILE.cc) -g -I. -I. -I. -MMD -MP -MF $@.d -o ${TESTDIR}/Tests/newtestrunner.o Tests/newtestrunner.cpp
 
 
-${TESTDIR}/tests/DataMutatorTest.o: tests/DataMutatorTest.cpp 
-	${MKDIR} -p ${TESTDIR}/tests
+${TESTDIR}/Tests/DataMutatorTest.o: Tests/DataMutatorTest.cpp 
+	${MKDIR} -p ${TESTDIR}/Tests
 	${RM} $@.d
-	$(COMPILE.cc) -g -I. -MMD -MP -MF $@.d -o ${TESTDIR}/tests/DataMutatorTest.o tests/DataMutatorTest.cpp
+	$(COMPILE.cc) -g -I. -MMD -MP -MF $@.d -o ${TESTDIR}/Tests/DataMutatorTest.o Tests/DataMutatorTest.cpp
 
 
-${TESTDIR}/tests/newtestrunner.o: tests/newtestrunner.cpp 
-	${MKDIR} -p ${TESTDIR}/tests
+${TESTDIR}/Tests/dataMutatorTestRunner.o: Tests/dataMutatorTestRunner.cpp 
+	${MKDIR} -p ${TESTDIR}/Tests
 	${RM} $@.d
-	$(COMPILE.cc) -g -I. -MMD -MP -MF $@.d -o ${TESTDIR}/tests/newtestrunner.o tests/newtestrunner.cpp
+	$(COMPILE.cc) -g -I. -MMD -MP -MF $@.d -o ${TESTDIR}/Tests/dataMutatorTestRunner.o Tests/dataMutatorTestRunner.cpp
 
 
 ${OBJECTDIR}/Mut/DataMutator_nomain.o: ${OBJECTDIR}/Mut/DataMutator.o Mut/DataMutator.cpp 
