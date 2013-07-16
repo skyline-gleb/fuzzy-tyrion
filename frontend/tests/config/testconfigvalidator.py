@@ -32,10 +32,17 @@ class TestCheck(unittest.TestCase):
             obj = Check(self.testdict_e[i])
             self.assertEqual(obj.Run(),1)
 
+
     def testRunF(self):
         for i in range(0,self.count_f):
             obj1 = Check(self.testdict_f[i])
-            self.assertFalse(obj1.Run() == 1)
+            try:
+                obj1.Run()
+            except Exception:
+                value = -1
+
+            if value != -1:
+                self.assertFalse(obj1.Run() == 1)
 
 
 if __name__ == "__main__":
