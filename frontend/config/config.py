@@ -10,10 +10,10 @@ class Config(object):
 
         obj = Check(data)
         try:
-            obj.Run()
+            value = obj.Run()
         except Exception:
             value = -1
-        
+
         if value == -1:
             print("Error")
 
