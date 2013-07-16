@@ -59,7 +59,7 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=-lcppunit
+LDLIBSOPTIONS=
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
@@ -72,18 +72,19 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libBackEnd.${CND_DLIB_EXT}: ${OBJECTF
 ${OBJECTDIR}/Rand/DataGenerator.o: Rand/DataGenerator.cpp 
 	${MKDIR} -p ${OBJECTDIR}/Rand
 	${RM} $@.d
-	$(COMPILE.cc) -g -I/usr/include/cppunit -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/Rand/DataGenerator.o Rand/DataGenerator.cpp
+	$(COMPILE.cc) -g -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/Rand/DataGenerator.o Rand/DataGenerator.cpp
 
 ${OBJECTDIR}/backend.o: backend.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.cc) -g -I/usr/include/cppunit -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/backend.o backend.cpp
+	$(COMPILE.cc) -g -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/backend.o backend.cpp
 
 # Subprojects
 .build-subprojects:
 
 # Build Test Targets
 .build-tests-conf: .build-conf ${TESTFILES}
+<<<<<<< HEAD
 ${TESTDIR}/TestFiles/f1: ${TESTDIR}/tests/newtestclass1.o ${TESTDIR}/tests/newtestrunner1.o ${OBJECTFILES:%.o=%_nomain.o}
 	${MKDIR} -p ${TESTDIR}/TestFiles
 	${LINK.cc}   -o ${TESTDIR}/TestFiles/f1 $^ ${LDLIBSOPTIONS} `cppunit-config --libs` `cppunit-config --libs`   
@@ -99,6 +100,23 @@ ${TESTDIR}/tests/newtestrunner1.o: tests/newtestrunner1.cpp
 	${MKDIR} -p ${TESTDIR}/tests
 	${RM} $@.d
 	$(COMPILE.cc) -g -I/usr/include/cppunit `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${TESTDIR}/tests/newtestrunner1.o tests/newtestrunner1.cpp
+=======
+${TESTDIR}/TestFiles/f1: ${TESTDIR}/Tests/DataGeneratorTest.o ${TESTDIR}/Tests/newtestrunner.o ${OBJECTFILES:%.o=%_nomain.o}
+	${MKDIR} -p ${TESTDIR}/TestFiles
+	${LINK.cc}   -o ${TESTDIR}/TestFiles/f1 $^ ${LDLIBSOPTIONS} -lcppunit 
+
+
+${TESTDIR}/Tests/DataGeneratorTest.o: Tests/DataGeneratorTest.cpp 
+	${MKDIR} -p ${TESTDIR}/Tests
+	${RM} $@.d
+	$(COMPILE.cc) -g -I. -MMD -MP -MF $@.d -o ${TESTDIR}/Tests/DataGeneratorTest.o Tests/DataGeneratorTest.cpp
+
+
+${TESTDIR}/Tests/newtestrunner.o: Tests/newtestrunner.cpp 
+	${MKDIR} -p ${TESTDIR}/Tests
+	${RM} $@.d
+	$(COMPILE.cc) -g -I. -MMD -MP -MF $@.d -o ${TESTDIR}/Tests/newtestrunner.o Tests/newtestrunner.cpp
+>>>>>>> develop
 
 
 ${OBJECTDIR}/Rand/DataGenerator_nomain.o: ${OBJECTDIR}/Rand/DataGenerator.o Rand/DataGenerator.cpp 
@@ -109,7 +127,11 @@ ${OBJECTDIR}/Rand/DataGenerator_nomain.o: ${OBJECTDIR}/Rand/DataGenerator.o Rand
 	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
 	then  \
 	    ${RM} $@.d;\
+<<<<<<< HEAD
 	    $(COMPILE.cc) -g -I/usr/include/cppunit -fPIC  -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/Rand/DataGenerator_nomain.o Rand/DataGenerator.cpp;\
+=======
+	    $(COMPILE.cc) -g -fPIC  -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/Rand/DataGenerator_nomain.o Rand/DataGenerator.cpp;\
+>>>>>>> develop
 	else  \
 	    ${CP} ${OBJECTDIR}/Rand/DataGenerator.o ${OBJECTDIR}/Rand/DataGenerator_nomain.o;\
 	fi
@@ -122,7 +144,11 @@ ${OBJECTDIR}/backend_nomain.o: ${OBJECTDIR}/backend.o backend.cpp
 	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
 	then  \
 	    ${RM} $@.d;\
+<<<<<<< HEAD
 	    $(COMPILE.cc) -g -I/usr/include/cppunit -fPIC  -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/backend_nomain.o backend.cpp;\
+=======
+	    $(COMPILE.cc) -g -fPIC  -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/backend_nomain.o backend.cpp;\
+>>>>>>> develop
 	else  \
 	    ${CP} ${OBJECTDIR}/backend.o ${OBJECTDIR}/backend_nomain.o;\
 	fi

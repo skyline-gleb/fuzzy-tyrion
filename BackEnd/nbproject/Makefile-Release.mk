@@ -84,21 +84,21 @@ ${OBJECTDIR}/backend.o: backend.cpp
 
 # Build Test Targets
 .build-tests-conf: .build-conf ${TESTFILES}
-${TESTDIR}/TestFiles/f1: ${TESTDIR}/tests/newtestclass1.o ${TESTDIR}/tests/newtestrunner1.o ${OBJECTFILES:%.o=%_nomain.o}
+${TESTDIR}/TestFiles/f1: ${TESTDIR}/Tests/DataGeneratorTest.o ${TESTDIR}/Tests/newtestrunner.o ${OBJECTFILES:%.o=%_nomain.o}
 	${MKDIR} -p ${TESTDIR}/TestFiles
-	${LINK.cc}   -o ${TESTDIR}/TestFiles/f1 $^ ${LDLIBSOPTIONS} `cppunit-config --libs` `cppunit-config --libs`   
+	${LINK.cc}   -o ${TESTDIR}/TestFiles/f1 $^ ${LDLIBSOPTIONS} 
 
 
-${TESTDIR}/tests/newtestclass1.o: tests/newtestclass1.cpp 
-	${MKDIR} -p ${TESTDIR}/tests
+${TESTDIR}/Tests/DataGeneratorTest.o: Tests/DataGeneratorTest.cpp 
+	${MKDIR} -p ${TESTDIR}/Tests
 	${RM} $@.d
-	$(COMPILE.cc) -O2 `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${TESTDIR}/tests/newtestclass1.o tests/newtestclass1.cpp
+	$(COMPILE.cc) -O2 -I. -MMD -MP -MF $@.d -o ${TESTDIR}/Tests/DataGeneratorTest.o Tests/DataGeneratorTest.cpp
 
 
-${TESTDIR}/tests/newtestrunner1.o: tests/newtestrunner1.cpp 
-	${MKDIR} -p ${TESTDIR}/tests
+${TESTDIR}/Tests/newtestrunner.o: Tests/newtestrunner.cpp 
+	${MKDIR} -p ${TESTDIR}/Tests
 	${RM} $@.d
-	$(COMPILE.cc) -O2 `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${TESTDIR}/tests/newtestrunner1.o tests/newtestrunner1.cpp
+	$(COMPILE.cc) -O2 -I. -MMD -MP -MF $@.d -o ${TESTDIR}/Tests/newtestrunner.o Tests/newtestrunner.cpp
 
 
 ${OBJECTDIR}/Rand/DataGenerator_nomain.o: ${OBJECTDIR}/Rand/DataGenerator.o Rand/DataGenerator.cpp 
