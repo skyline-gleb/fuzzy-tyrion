@@ -1,0 +1,173 @@
+{
+    "api_url": "http://catalog.api.2gis.ru/2.0/",
+
+    "rps": 2,
+
+    "headers": {},
+
+    "parameters": {
+        "key": "rumbdr6413"
+    },
+
+    "methods": {
+        
+        "search#filial": {
+            "http_method": "POST",
+            "count": 2,
+            "parameters": {
+                "type": {
+                    "required": true,
+                    "data_type": "string",
+                    "value": "project",
+                    "action": "skip"
+                },
+                "output": {
+                    "required": false,
+                    "data_type": "string",
+                    "value": "json",
+                    "action": "generate"
+                },
+                "callback": {
+                    "required": false,
+                    "data_type": "string",
+                    "value": "myCallback",
+                    "action": "generate"
+                },
+                "lang": {
+                    "required": false,
+                    "data_type": "string",
+                    "value": "all",
+                    "action": "mutate"
+                },
+                "fields": {
+                    "required": false,
+                    "data_type": "string",
+                    "value": "data.has_transport,data.alias",
+                    "action": "mutate"
+                },
+                "sort": {
+                    "required": false,
+                    "data_type": "string",
+                    "value": "relevance",
+                    "action": "generate"
+                },
+                "page": {
+                    "required": false,
+                    "data_type": "int",
+                    "value": 1,
+                    "action": "generate"
+                },
+                "page_size": {
+                    "required": false,
+                    "data_type": "int",
+                    "value": 20,
+                    "action": "generate"
+                },
+                "output": {
+                    "required": false,
+                    "data_type": "string",
+                    "value": "json",
+                    "action": "generate"
+                },
+                "lang": {
+                    "required": false,
+                    "data_type": "string",
+                    "value": "it",
+                    "action": "generate"
+                },
+                "fields": {
+                    "required": false,
+                    "data_type": "string",
+                    "value": "data.reviews",
+                    "action": "generate"
+                }
+            }
+        },
+        
+        "search#project": {
+            "http_method": "POST",
+            "count": 2,
+            "parameters": {
+                "type": {
+                    "required": true,
+                    "data_type": "string",
+                    "value": "project",
+                    "action": "skip"
+                },
+                "output": {
+                    "required": false,
+                    "data_type": "string",
+                    "value": "json",
+                    "action": "generate"
+                },
+                "callback": {
+                    "required": false,
+                    "data_type": "string",
+                    "value": "myCallback",
+                    "action": "generate"
+                },
+                "lang": {
+                    "required": false,
+                    "data_type": "string",
+                    "value": "all",
+                    "action": "mutate"
+                },
+                "fields": {
+                    "required": false,
+                    "data_type": "string",
+                    "value": "data.has_transport,data.alias",
+                    "action": "mutate"
+                }
+            }
+        },
+
+        "search#rubric": {
+            "http_method": "POST",
+            "count": 2,
+            "parameters": {
+                "type": {
+                    "required": true,
+                    "data_type": "string",
+                    "value": "rubric",
+                    "action": "skip"
+                },
+                "where": {
+                    "required": true,
+                    "data_type": "string",
+                    "value": "Novosibirsk",
+                    "action": "generate"
+                },
+                "lang": {
+                    "required": false,
+                    "data_type": "string",
+                    "value": "ru",
+                    "action": "generate"
+                },
+                "sort": {
+                    "required": false,
+                    "data_type": "string",
+                    "value": "name",
+                    "action": "generate"
+                },
+                "output": {
+                    "required": false,
+                    "data_type": "string",
+                    "value": "xml",
+                    "action": "generate"
+                },
+                "fields": {
+                    "required": false,
+                    "data_type": "string",
+                    "value": "data.children",
+                    "action": "generate"
+                },
+                "callback": {
+                    "required": false,
+                    "data_type": "string",
+                    "value": "myCallback_42",
+                    "action": "mutate"
+                }
+            }
+        }
+    }
+}

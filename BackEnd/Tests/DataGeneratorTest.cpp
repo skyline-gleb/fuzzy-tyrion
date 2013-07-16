@@ -30,9 +30,9 @@ void DataGeneratorTest::tearDown()
 void DataGeneratorTest::testRandomlyGenerateString()
 {
     const int len = 5;
-    DataGenerator dataGenerator1, dataGenerator2;
-    std::string result1 = dataGenerator1.randomlyGenerateString(len);
-    std::string result2 = dataGenerator2.randomlyGenerateString(len);
+    DataGenerator dataGenerator;
+    std::string result1 = dataGenerator.randomlyGenerateString<std::string>(len);
+    std::string result2 = dataGenerator.randomlyGenerateString<std::string>(len);
     if (result1 != result2) {
         CPPUNIT_ASSERT(true);
     }
