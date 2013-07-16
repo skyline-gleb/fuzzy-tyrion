@@ -119,6 +119,55 @@
                     "action": "mutate"
                 }
             }
+        },
+
+        "search#rubric": {
+            "http_method": "POST",
+            "count": 2,
+            "parameters": {
+                "type": {
+                    "required": true,
+                    "data_type": "string",
+                    "value": "rubric",
+                    "action": "skip"
+                },
+                "where": {
+                    "required": true,
+                    "data_type": "string",
+                    "value": "Novosibirsk",
+                    "action": "generate"
+                },
+                "lang": {
+                    "required": false,
+                    "data_type": "string",
+                    "value": "ru",
+                    "action": "generate"
+                },
+                "sort": {
+                    "required": false,
+                    "data_type": "string",
+                    "value": "name",
+                    "action": "generate"
+                },
+                "output": {
+                    "required": false,
+                    "data_type": "string",
+                    "value": "xml",
+                    "action": "generate"
+                },
+                "fields": {
+                    "required": false,
+                    "data_type": "string",
+                    "value": "data.children",
+                    "action": "generate"
+                },
+                "callback": {
+                    "required": false,
+                    "data_type": "string",
+                    "value": "myCallback_42",
+                    "action": "mutate"
+                }
+            }
         }
     }
 }
