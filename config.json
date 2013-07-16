@@ -10,7 +10,7 @@
     },
 
     "methods": {
-        "search": {
+        "search#filial": {
             "http_method": "POST",
             "count": 2,
             "parameters": {
@@ -31,7 +31,43 @@
                     "data_type": "string",
                     "value": "Novosibirsk",
                     "action": "generate"
-                }
+                },
+				"sort": {
+                    "required": false,
+                    "data_type": "string",
+                    "value": "relevance",
+                    "action": "generate"
+                },
+				"page": {
+					"required": false,
+                    "data_type": "int",
+                    "value": 1,
+                    "action": "generate"
+				},
+				"page_size": {
+					"required": false,
+                    "data_type": "int",
+                    "value": 20,
+                    "action": "generate"
+				},
+				"output": {
+					"required": false,
+                    "data_type": "string",
+                    "value": "json",
+                    "action": "generate"
+				},
+				"lang": {
+					"required": false,
+                    "data_type": "string",
+                    "value": "it",
+                    "action": "generate"
+				},
+				"fields": {
+					"required": false,
+                    "data_type": "string",
+                    "value": "data.reviews",
+                    "action": "generate"
+				}
             }
         }
     }

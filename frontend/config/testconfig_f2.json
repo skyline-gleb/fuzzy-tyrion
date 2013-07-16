@@ -1,0 +1,45 @@
+{
+	"api_url": "lkdkdigooerrdkkjjssdffkjdksf",
+	"rps": 20,
+	"headers": {},
+	"parameters": {
+		"key": "bjggfgkw1344"
+	},
+	"methods": {
+		"delete": {
+			"http_method": "GET",
+			"count": 3949,
+			"parameters": {
+				"dsf": {
+					"required": true,
+					"data_type": "int",
+					"value": 939
+				},
+				"hfsdhf": {
+					"required": true,
+					"data_type": "int",
+					"value": 939,
+					"action": "mutate"
+				}
+			}
+		},
+		"new": {
+			"http_method": "GET",
+			"count": 3949,
+			"parameters": {
+				"dsf": {
+					"required": true,
+					"data_type": "int",
+					"value": 939,
+					"action": "mutate"
+				},
+				"hfsdhf": {
+					"required": true,
+					"data_type": "int",
+					"value": 939,
+					"action": "mutate"
+				}
+			}
+		}
+	}
+}
