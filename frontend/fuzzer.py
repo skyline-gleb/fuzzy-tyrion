@@ -5,6 +5,7 @@ from .http.request import *
 from frontend.log.log import *
 from itertools import chain
 from backend import DataGenerator
+from .core.app import *
 
 
 class Fuzzer(object):
@@ -57,9 +58,6 @@ class Fuzzer(object):
         return data
 
     def log(self, response):
-        if (response.error_msg == None):
-            msg = response.request['method'] + ' ' + response.request['url'] + '\n'
-            msg += str(response.status_code) + ' ' + response.status_msg + '\n'
-            Log.write(msg)
-        else:
-            Log.write(response.error_msg)
+        if ( App.args.verbose ) or (response.error_msg != None):
+            App.log.addLog({"status":response.status_code, "message":response.request["url"], "name":response.request['method']})
+            App.log.printLog()
