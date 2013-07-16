@@ -14,8 +14,15 @@
 class DataGenerator {
 public:
     DataGenerator();
-    template < typename T>
-    T randomlyGenerateString(const int len);
+    template < typename T >
+    T randomlyGenerateString(const int len){
+        srand(time(0));
+        T str;
+        for(int i = 0; i < len; i++) {
+                str.push_back(rand() % 256);
+        }
+        return str;
+    }
 
     template< typename T >
     T randomlyGenerateNumber(T min, T max) {

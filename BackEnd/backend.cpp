@@ -16,6 +16,12 @@ extern "C" {
         return pres;
     }
     
+    wchar_t * generate_wstring(const int _length = 10) {
+        DataGenerator gen;
+        std::wstring wstr = (gen.randomlyGenerateString<std::wstring>(_length));
+        wchar_t* pres = (wchar_t*)wstr.c_str();
+        return pres;
+    }
     int generate_int32(const int _min = 0, const int _max = 1000)
     {
         assert(_min < _max);
