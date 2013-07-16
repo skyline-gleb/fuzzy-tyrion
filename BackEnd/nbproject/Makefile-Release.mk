@@ -35,9 +35,14 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 # Object Files
 OBJECTFILES= \
 	${OBJECTDIR}/Rand/DataGenerator.o \
-	${OBJECTDIR}/Tests/DataGeneratorTest.o \
 	${OBJECTDIR}/backend.o
 
+# Test Directory
+TESTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}/tests
+
+# Test Files
+TESTFILES= \
+	${TESTDIR}/TestFiles/f1
 
 # C Compiler Flags
 CFLAGS=
@@ -68,11 +73,6 @@ ${OBJECTDIR}/Rand/DataGenerator.o: Rand/DataGenerator.cpp
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/Rand/DataGenerator.o Rand/DataGenerator.cpp
 
-${OBJECTDIR}/Tests/DataGeneratorTest.o: Tests/DataGeneratorTest.cpp 
-	${MKDIR} -p ${OBJECTDIR}/Tests
-	${RM} $@.d
-	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/Tests/DataGeneratorTest.o Tests/DataGeneratorTest.cpp
-
 ${OBJECTDIR}/backend.o: backend.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
@@ -80,6 +80,60 @@ ${OBJECTDIR}/backend.o: backend.cpp
 
 # Subprojects
 .build-subprojects:
+
+# Build Test Targets
+.build-tests-conf: .build-conf ${TESTFILES}
+${TESTDIR}/TestFiles/f1: ${TESTDIR}/Tests/DataGeneratorTest.o ${TESTDIR}/Tests/newtestrunner.o ${OBJECTFILES:%.o=%_nomain.o}
+	${MKDIR} -p ${TESTDIR}/TestFiles
+	${LINK.cc}   -o ${TESTDIR}/TestFiles/f1 $^ ${LDLIBSOPTIONS} 
+
+
+${TESTDIR}/Tests/DataGeneratorTest.o: Tests/DataGeneratorTest.cpp 
+	${MKDIR} -p ${TESTDIR}/Tests
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -I. -MMD -MP -MF $@.d -o ${TESTDIR}/Tests/DataGeneratorTest.o Tests/DataGeneratorTest.cpp
+
+
+${TESTDIR}/Tests/newtestrunner.o: Tests/newtestrunner.cpp 
+	${MKDIR} -p ${TESTDIR}/Tests
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -I. -MMD -MP -MF $@.d -o ${TESTDIR}/Tests/newtestrunner.o Tests/newtestrunner.cpp
+
+
+${OBJECTDIR}/Rand/DataGenerator_nomain.o: ${OBJECTDIR}/Rand/DataGenerator.o Rand/DataGenerator.cpp 
+	${MKDIR} -p ${OBJECTDIR}/Rand
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/Rand/DataGenerator.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} $@.d;\
+	    $(COMPILE.cc) -O2 -fPIC  -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/Rand/DataGenerator_nomain.o Rand/DataGenerator.cpp;\
+	else  \
+	    ${CP} ${OBJECTDIR}/Rand/DataGenerator.o ${OBJECTDIR}/Rand/DataGenerator_nomain.o;\
+	fi
+
+${OBJECTDIR}/backend_nomain.o: ${OBJECTDIR}/backend.o backend.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/backend.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} $@.d;\
+	    $(COMPILE.cc) -O2 -fPIC  -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/backend_nomain.o backend.cpp;\
+	else  \
+	    ${CP} ${OBJECTDIR}/backend.o ${OBJECTDIR}/backend_nomain.o;\
+	fi
+
+# Run Test Targets
+.test-conf:
+	@if [ "${TEST}" = "" ]; \
+	then  \
+	    ${TESTDIR}/TestFiles/f1 || true; \
+	else  \
+	    ./${TEST} || true; \
+	fi
 
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}

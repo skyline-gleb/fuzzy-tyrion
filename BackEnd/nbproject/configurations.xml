@@ -20,6 +20,14 @@
                    displayName="Файлы тестов"
                    projectFiles="false"
                    kind="TEST_LOGICAL_FOLDER">
+      <logicalFolder name="f1"
+                     displayName="CppUnitTests"
+                     projectFiles="true"
+                     kind="TEST">
+        <itemPath>Tests/DataGeneratorTest.cpp</itemPath>
+        <itemPath>Tests/DataGeneratorTest.h</itemPath>
+        <itemPath>Tests/newtestrunner.cpp</itemPath>
+      </logicalFolder>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Важные файлы"
@@ -36,17 +44,25 @@
         <compilerSet>default</compilerSet>
       </toolsSet>
       <compileType>
+      </compileType>
+      <folder path="TestFiles/f1">
+        <cTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </cTool>
         <ccTool>
           <incDir>
-            <pElem>/usr/include/cppunit</pElem>
+            <pElem>.</pElem>
           </incDir>
         </ccTool>
         <linkerTool>
+          <output>${TESTDIR}/TestFiles/f1</output>
           <linkerLibItems>
-            <linkerLibLibItem>cppunit</linkerLibLibItem>
+            <linkerLibStdlibItem>CppUnit</linkerLibStdlibItem>
           </linkerLibItems>
         </linkerTool>
-      </compileType>
+      </folder>
     </conf>
     <conf name="Release" type="2">
       <toolsSet>
@@ -67,6 +83,21 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
+      <folder path="TestFiles/f1">
+        <cTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f1</output>
+        </linkerTool>
+      </folder>
     </conf>
   </confs>
 </configurationDescriptor>
